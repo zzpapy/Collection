@@ -11,7 +11,7 @@
 <div class="example-wrapper">
     {{form_start(form,{'attr': { }})}}
     {{ form_widget(form.type, { 'attr': {'class': 'radio', 'id':''}, 'label_attr': {'class': 'CUSTOM_LABEL_CLASS'} }) }}
-    {{form_row(form.category)}}
+    {# {{form_row(form.category)}} #}
     {# <a href="{{path('app_ajout')}}">ajouter un ecatégorie</a> #}
     {{form_row(form.title)}}
     <input type="textarea" id="text_auto_type_form_text" name="text_auto_type_form[text]" value="" class="text" />

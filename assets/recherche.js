@@ -88,7 +88,8 @@ class App extends React.Component {
     }
 
     handleChange(e) {
-        this.setState({ selectCat: e.value });
+        console.log(e.target.value)
+        this.setState({ selectCat: e.target.value });
     }
 
     click = (e) => {
@@ -178,12 +179,22 @@ class App extends React.Component {
                 </div>
 
     render() {
-        console.log(this.state.flash)
+        console.log(this.state.listText)
     return (
             <div>
                <form className="recherche" onSubmit={this.click}> 
-                    <Select onChange={this.handleChange} options={this.state.category} />              
-                    <input type="text" onKeyUp={this.keyUpHandlerActor} placeholder="" ref={this.message}  />
+                    {/* <Select onChange={this.handleChange} options={this.state.category} />   */}
+                    <div>
+                        {this.state.category.length > 0 ?  this.state.category.map(({value}) => {
+                            return(
+                                <label>
+                                    {value}
+                                <input type="radio" value={value} name="gender" className="radio"  onChange={this.handleChange}/> 
+                                </label>
+                            )
+                        }):null}
+                    </div>            
+                    Recherche : <input type="text" onKeyUp={this.keyUpHandlerActor} placeholder="" ref={this.message}  />
                 </form>
                 <div className="listText">
                 {Object.keys(this.state.listText).length != 0 ? this.state.listText.text.map(

@@ -32,13 +32,13 @@ class TextAutoTypeFormType extends AbstractType
             ->add('title')
             // ->add('text')
             // ->add('User')
-            ->add('category',EntityType ::class,[
-                'mapped' => true,
-                'class' => Category::class,
-                'choice_label' => 'name',
-                'placeholder' => 'choisir une catégorie',
-                'label' => 'catégories'
-            ])
+            // ->add('category',EntityType ::class,[
+            //     'mapped' => true,
+            //     'class' => Category::class,
+            //     'choice_label' => 'name',
+            //     'placeholder' => 'choisir une catégorie',
+            //     'label' => 'catégories'
+            // ])
             ->add('valder',SubmitType::class)
         ;
         
