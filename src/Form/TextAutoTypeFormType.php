@@ -29,7 +29,9 @@ class TextAutoTypeFormType extends AbstractType
             'expanded' => true,
           'multiple' => false,
         ])
-            ->add('title')
+            ->add('title',null,[
+                'label' => 'Titre'
+            ])
             // ->add('text')
             // ->add('User')
             // ->add('category',EntityType ::class,[
