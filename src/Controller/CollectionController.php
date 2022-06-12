@@ -57,7 +57,7 @@ class CollectionController extends AbstractController
             array_push($res,$enc);
         }
         
-        dump($result);die;
+        // dump($result);die;
         $response->setContent(json_encode([
             "text" => $res
         ]));
