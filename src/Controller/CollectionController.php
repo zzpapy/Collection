@@ -21,26 +21,32 @@ class CollectionController extends AbstractController
         $form = $this->createForm(TextAutoTypeFormType::class, $textAuto);
         $form->handleRequest($request);
         // dump($form,$form->getExtraData(),$form->isValid());
-        if ($form->isSubmitted() && $form->isValid()) {
+        if($this->getUser()){
 
-            $em = $doctrine->getManager();
-            $textAuto->setUser($this->getUser());
-            $textAuto->setText($form->getExtraData()["text"]);
-            $em->persist($textAuto);
-            $em->flush();
-            unset($form);
-            $form = $this->createForm(TextAutoTypeFormType::class, $textAuto);
-            return $this->redirectToRoute('app_collection');
-            // return $this->render('collection/index.html.twig', [
-            //     'controller_name' => 'CollectionController',
-            //     "form" => $form->createView(),
-            // ]);
-
+            if ($form->isSubmitted() && $form->isValid()) {
+    
+                $em = $doctrine->getManager();
+                $textAuto->setUser($this->getUser());
+                $textAuto->setText($form->getExtraData()["text"]);
+                $em->persist($textAuto);
+                $em->flush();
+                unset($form);
+                $form = $this->createForm(TextAutoTypeFormType::class, $textAuto);
+                return $this->redirectToRoute('app_collection');
+                // return $this->render('collection/index.html.twig', [
+                //     'controller_name' => 'CollectionController',
+                //     "form" => $form->createView(),
+                // ]);
+    
+            }
+            return $this->render('collection/index.html.twig', [
+                'controller_name' => 'CollectionController',
+                "form" => $form->createView(),
+            ]);
         }
-        return $this->render('collection/index.html.twig', [
-            'controller_name' => 'CollectionController',
-            "form" => $form->createView(),
-        ]);
+        else{
+            return $this->redirectToRoute('app_login');
+        }
     }
 
     #[Route('/search', name: 'app_search')]
