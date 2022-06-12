@@ -54,7 +54,7 @@ class TextAutoRepository extends ServiceEntityRepository
        ->getQuery()
        ->getResult()
        ;
-       dump($res);die;
+    //    dump($res);die;
        return $res;
    }
 
