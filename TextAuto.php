@@ -16,7 +16,7 @@ class TextAuto
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $title;
 
-    #[ORM\Column(type: 'text', length: 255)]
+    #[ORM\Column(type: 'string', length: 255)]
     private $text;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'textAutos')]
@@ -57,7 +57,7 @@ class TextAuto
         return $this;
     }
 
-    public function getUser(): ?string
+    public function getUser(): ?User
     {
         return $this->User;
     }
