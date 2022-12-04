@@ -41,7 +41,6 @@ class TextAutoTypeFormType extends AbstractType
             //     'placeholder' => 'choisir une catégorie',
             //     'label' => 'catégories'
             // ])
-            ->add('valder',SubmitType::class)
         ;
         
     }

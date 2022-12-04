@@ -45,7 +45,8 @@ class App extends React.Component {
             listText : {},
             x : 0,
             y : "100vh",
-            flash : false
+            flash : false,
+            radio:null
             };
            
     }
@@ -74,6 +75,7 @@ class App extends React.Component {
     keyUpHandlerActor = (refName, e) => {
         this.setState({                              
             listText : {},
+            radio : refName.target.value
             // selectCat: ""
           });
         search(refName.target.value,this.state.selectCat)
@@ -88,8 +90,17 @@ class App extends React.Component {
     }
 
     handleChange(e) {
-        console.log(e.target.value)
+        console.log(e.target.value,this.state.radio)
         this.setState({ selectCat: e.target.value });
+        search(this.state.radio,this.state.selectCat)
+        .then(res => {
+            return res
+         })
+         .then((res) => {
+             this.setState({                              
+             listText : res
+           });
+         })
     }
 
     click = (e) => {
