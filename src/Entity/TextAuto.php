@@ -45,12 +45,12 @@ class TextAuto
         return $this;
     }
 
-    public function getText(): ?string
+    public function getText(): ?longtext
     {
         return $this->text;
     }
 
-    public function setText(string $text): self
+    public function setText(string $text): longtext
     {
         $this->text = $text;
 
