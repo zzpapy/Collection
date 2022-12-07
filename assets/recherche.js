@@ -215,13 +215,15 @@ class App extends React.Component {
             <div>
                <form className="recherche" onSubmit={this.click}> 
                     {/* <Select onChange={this.handleChange} options={this.state.category} />   */}
-                    <div>
+                    <div className="radio">
                         {this.state.category.length > 0 ?  this.state.category.map(({value}) => {
                             return(
-                                <label>
+                                <span>
+                                <input type="radio" value={value} name="gender" id={value}  onChange={this.handleChange}/> 
+                                <label for={value}>
                                     {value}
-                                <input type="radio" value={value} name="gender" className="radio"  onChange={this.handleChange}/> 
                                 </label>
+                                </span>
                             )
                         }):null}
                     </div>            
