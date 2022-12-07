@@ -16,7 +16,6 @@ const click = (e) => {
  const Items = ({ id, title, text}) => (
      <div  className="text" data={id} id={id} > 
         <p><Markup content={title} /></p> 
-        <span key={id} onClick={click}>x</span>
         <Markup className="content" content={text} /> 
      </div> 
  );
