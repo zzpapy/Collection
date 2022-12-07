@@ -84,11 +84,15 @@ input[type="radio"] {
     border: 1px solid #000;
     background-color: green;
   }
-  .title{
-    width: 50%;
-  }
+  .radio{
+      padding-bottom: 1em;
+    }
   .title, .radio{
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-  }
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .title{
+      width: 50%;
+      margin-bottom: 1em;
+    }
