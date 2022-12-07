@@ -1,7 +1,25 @@
-.container{
+.box{
     // width: 90%;
     margin: 0 auto;
     padding: 0.5em;
+    // background-color: #000;
+    color: white;
+    height: 100vh;
+}
+body{
+    background-color: #000 !important;
+}
+#recherche{
+    // background-color: #000;
+    height: 100vh;
+}
+.valid{
+    margin: 0 auto;
+    display: block;
+    padding: 0 2em;
+    background: white;
+    margin-top: 1em;
+    cursor: pointer;
 }
 
 .listText{
@@ -21,7 +39,8 @@
     border: 10px solid #00A4BD;
     margin-bottom: 1em;
     background-clip: border-box;
-    // width: 25%;
+    background-color: white;
+    color: black;
 }
 .text span{
     padding: 1em;
@@ -79,6 +98,8 @@ input[type="radio"] {
   input[type="radio"] + label {
     padding: 0.3rem 0.5rem;
     border: 1px dashed #ccc;
+    background-color: white;
+    cursor : pointer;
   }
   input[type="radio"]:checked + label {
     border: 1px solid #000;
@@ -86,6 +107,7 @@ input[type="radio"] {
   }
   .radio{
       padding-bottom: 1em;
+      color:#000;
     }
   .title, .radio{
       display: block;
