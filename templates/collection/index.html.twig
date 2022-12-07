@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<div class="example-wrapper">
+<div class="container">
     {{form_start(form,{'attr': { }})}}
     {{ form_widget(form.type, { 'attr': {'class': 'radio', 'id':''}, 'label_attr': {'class': 'CUSTOM_LABEL_CLASS'} }) }}
     {# {{form_row(form.category)}} #}
@@ -13,6 +13,6 @@
     <input type="textarea" id="text_auto_type_form_text" name="text_auto_type_form[text]" value="" class="text" />
     <button class="btn">ok</button>
     {{form_end(form)}}
-</div>
 <div id="recherche"></div>
+</div>
 {% endblock %}
