@@ -42,14 +42,16 @@ class TextAutoRepository extends ServiceEntityRepository
    /**
     * @return TextAuto[] Returns an array of TextAuto objects
     */
-   public function search($value,$cat): array
+   public function search($value,$cat,$id): array
    {
        $res =  $this->createQueryBuilder('t')
        ->andWhere('t.text LIKE :val')
        ->orWhere('t.title LIKE :val')
        ->andWhere('t.type = :cat')
+       ->andWhere('t.User = :id')
        ->setParameter('val', '%'.$value.'%')
        ->setParameter('cat', $cat)
+       ->setParameter('id', $id)
        ->orderBy('t.id', 'ASC')
        ->getQuery()
        ->getResult()
@@ -57,6 +59,23 @@ class TextAutoRepository extends ServiceEntityRepository
     //    dump($res);die;
        return $res;
    }
+
+    /**
+    * @return TextAuto[] Returns an array of TextAuto objects
+    */
+    public function findtext($id): array
+    {
+        $res =  $this->createQueryBuilder('t')
+       
+        ->andWhere('t.User = :id')
+        ->setParameter('id', $id)
+        ->orderBy('t.id', 'ASC')
+        ->getQuery()
+        ->getResult()
+        ;
+        // dump($res);die;
+        return $res;
+    }
 
    /**
     * @return TextAuto[] Returns an array of TextAuto objects

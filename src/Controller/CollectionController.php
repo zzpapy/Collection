@@ -54,8 +54,9 @@ class CollectionController extends AbstractController
     {
         $response = new Response();
         $value = $request->query->get("value");
+        $id = $this->getUser()->getId();
         $cat = $request->query->get("cat");
-        $result = $doctrine->getRepository(TextAuto::class)->search($value,$cat);
+        $result = $doctrine->getRepository(TextAuto::class)->search($value,$cat,$id);
         $enc = "";
         $res = [];
         foreach ($result as $key => $value) {
@@ -64,6 +65,26 @@ class CollectionController extends AbstractController
         }
         
         // dump($result);die;
+        $response->setContent(json_encode([
+            "text" => $res
+        ]));
+        return $response;
+    }
+
+    #[Route('/findtext', name: 'app_find')]
+    public function find(Request $request,ManagerRegistry $doctrine): Response
+    {
+        $response = new Response();
+        $id = $this->getUser()->getId();
+        $result = $doctrine->getRepository(TextAuto::class)->findtext($id);
+        $enc = "";
+        $res = [];
+        foreach ($result as $key => $value) {
+            $enc = $value->jsonSerialize();
+            array_push($res,$enc);
+        }
+        
+        // dump($res);die;
         $response->setContent(json_encode([
             "text" => $res
         ]));
@@ -85,6 +106,20 @@ class CollectionController extends AbstractController
         // dump($res);die;
         $response->setContent(json_encode([
             "cat" => $res
+        ]));
+        return $response;
+    }
+    #[Route('/delete', name: 'app_delete')]
+    public function delete(Request $request,ManagerRegistry $doctrine): Response
+    {
+        $id = $request->request->get('id');
+        $phrase = $doctrine->getRepository(TextAuto::class)->find($id);
+        $entityManager = $doctrine->getManager();
+        $entityManager->remove($phrase);
+        $entityManager->flush();
+        $response = new Response();
+        $response->setContent(json_encode([
+            "sales" => "test excell"
         ]));
         return $response;
     }

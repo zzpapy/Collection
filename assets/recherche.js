@@ -25,7 +25,7 @@ import { createRoot } from 'react-dom/client';
 import React , { useEffect, useState }from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import {search, cat} from './APP/APP'
+import {search, cat, find} from './APP/APP'
 import Items from './components/Items'
 import Select from 'react-select'
 import FlashMessage from 'react-flash-message'
@@ -42,6 +42,7 @@ class App extends React.Component {
         this.state = {
             category : {},
             selectCat : "",
+            all : {},
             listText : {},
             x : 0,
             y : "100vh",
@@ -69,7 +70,26 @@ class App extends React.Component {
                     console.log(result,Object.keys(this.state.category).length)
                 }
             }
-            )         
+            ) 
+            
+            find().then(res => {
+                console.log(res)
+                return res
+                
+            }).then(
+                res => {
+                    let result = []
+                    res.text.map((key, el) =>{
+                        result = [...result,{text : key.text, title : key.title, id: key.id }]
+                    })
+                    if(Object.keys(this.state.all).length ==0){
+                        this.setState({
+                            all : result
+                        })
+                        console.log(result,Object.keys(this.state.all).length)
+                    }
+                }
+                ) 
         }
    
     keyUpHandlerActor = (refName, e) => {
@@ -190,7 +210,7 @@ class App extends React.Component {
                 </div>
 
     render() {
-        console.log(this.state.listText)
+        console.log(this.state.all)
     return (
             <div>
                <form className="recherche" onSubmit={this.click}> 
@@ -226,7 +246,25 @@ class App extends React.Component {
                         </div>
                     );
                 }
-                ):null} 
+                ):Object.keys(this.state.all).length != 0 ? this.state.all.map(
+                    ({ text, title,id }) =>  {
+                        return (
+                            <div  onClick={this.click}>
+                                <Items
+                                    key={id}
+                                    text={text}
+                                    title={title}
+                                    id={id}
+                                    onClick={this.click}
+                                >
+                                </Items>
+                                <div className="falshContent" style={{width:"100%",position:"fixed",top:"25vh",left:"0"}}>
+                                    {this.state.flash ? this.dispFlash : null}
+                                </div>
+                            </div>
+                        );
+                    }
+                    ):null} 
                 </div>
             </div>     
         )
