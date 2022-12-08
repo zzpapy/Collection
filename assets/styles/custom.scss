@@ -6,7 +6,24 @@
     color: white;
     height: 100vh;
 }
-
+.top{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: black;
+}
+.button {
+    font:  14px Arial;
+    text-decoration: none;
+    background-color: white;
+    line-height: 20px;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+  }
 .white{
     background-color: white !important;
 }

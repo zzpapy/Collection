@@ -5,7 +5,10 @@
 {% block body %}
 
 <div class="box">
-    <button id="color">Light</button>
+    <div class="top">
+        <button id="color">Light</button>
+        <a class="button" href="{{ path('app_logout') }}">Déconnexion</a>
+    </div>
     {{form_start(form,{'attr': { }})}}
     {{ form_widget(form.type, { 'attr': {'class': 'radio', 'id':''}, 'label_attr': {'class': 'CUSTOM_LABEL_CLASS'} }) }}
     {# {{form_row(form.category)}} #}
