@@ -54,7 +54,6 @@
           return res.json()
         })
         .then(async res => {
-          console.log(res)
           return res
           
         })
