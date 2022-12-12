@@ -205,14 +205,14 @@ class App extends React.Component {
      deleteItem = (e) => {
         e.preventDefault();
        
-           console.log(e.target.className, "toto")
-           if(e.target.className == "del"){
-               del(e.target.id)
+           console.log(e.target.parentNode, "toto")
+           if(e.target.parentNode.className == "del"){
+               del(e.target.parentNode.id)
                .then(res => {
                    return res
                 })
                 .then(
-                   e.target.style.display= "none"
+                   e.target.parentNode.style.display= "none"
                 )
 
            }
