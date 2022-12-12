@@ -249,7 +249,7 @@ class App extends React.Component {
                 {Object.keys(this.state.listText).length != 0 ? this.state.listText.text.map(
                 ({ text, title,id }) =>  {
                     return (
-                        <div className="del" id={id} onClick={this.deleteItem}>X
+                        <div className="del" id={id} onClick={this.deleteItem}><i class="fa-regular fa-trash-can"></i>
                         <div  onClick={this.click}>
                             <Items
                                 key={id}
@@ -269,7 +269,7 @@ class App extends React.Component {
                 ):Object.keys(this.state.all).length != 0 ? this.state.all.map(
                     ({ text, title,id }) =>  {
                         return (
-                            <div className="del" id={id} onClick={this.deleteItem}>X
+                            <div className="del" id={id} onClick={this.deleteItem}><i class="fa-regular fa-trash-can"></i>
                             <div  onClick={this.click}>
                                 <Items
                                     key={id}
