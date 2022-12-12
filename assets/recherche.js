@@ -218,7 +218,7 @@ class App extends React.Component {
                     <div className="radio">
                         {this.state.category.length > 0 ?  this.state.category.map(({value}) => {
                             return(
-                                <span>
+                                <span> 
                                 <input type="radio" value={value} name="gender" id={value}  onChange={this.handleChange}/> 
                                 <label for={value}>
                                     {value}
