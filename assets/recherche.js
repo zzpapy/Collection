@@ -25,7 +25,7 @@ import { createRoot } from 'react-dom/client';
 import React , { useEffect, useState }from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import {search, cat, find} from './APP/APP'
+import {search, cat, find, del} from './APP/APP'
 import Items from './components/Items'
 import Select from 'react-select'
 import FlashMessage from 'react-flash-message'
@@ -202,6 +202,19 @@ class App extends React.Component {
             console.log(e.target.textContent,e.target.querySelector(".content"))
         }
     }
+     deleteItem = (e) => {
+        e.preventDefault();
+       
+           console.log(e)
+            del(e.target.id)
+            .then(res => {
+                return res
+             })
+             .then(
+                e.target.style.display= "none"
+             )
+        }
+     
    
 
    
@@ -233,6 +246,7 @@ class App extends React.Component {
                 {Object.keys(this.state.listText).length != 0 ? this.state.listText.text.map(
                 ({ text, title,id }) =>  {
                     return (
+                        <div id={id} onClick={this.deleteItem}>X
                         <div  onClick={this.click}>
                             <Items
                                 key={id}
@@ -246,11 +260,13 @@ class App extends React.Component {
                                 {this.state.flash ? this.dispFlash : null}
                             </div>
                         </div>
+                        </div>
                     );
                 }
                 ):Object.keys(this.state.all).length != 0 ? this.state.all.map(
                     ({ text, title,id }) =>  {
                         return (
+                            <div id={id} onClick={this.deleteItem}>X
                             <div  onClick={this.click}>
                                 <Items
                                     key={id}
@@ -263,6 +279,7 @@ class App extends React.Component {
                                 <div className="falshContent" style={{width:"100%",position:"fixed",top:"25vh",left:"0"}}>
                                     {this.state.flash ? this.dispFlash : null}
                                 </div>
+                            </div>
                             </div>
                         );
                     }

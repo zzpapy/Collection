@@ -112,7 +112,7 @@ class CollectionController extends AbstractController
     #[Route('/delete', name: 'app_delete')]
     public function delete(Request $request,ManagerRegistry $doctrine): Response
     {
-        $id = $request->request->get('id');
+        $id = $request->query->get('id');
         $phrase = $doctrine->getRepository(TextAuto::class)->find($id);
         $entityManager = $doctrine->getManager();
         $entityManager->remove($phrase);
