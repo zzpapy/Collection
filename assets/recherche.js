@@ -1,24 +1,3 @@
-// $("#click").on('click', (e) => {
-//     e.preventDefault()
-//     let url = $(e.target).data('url')
-//     $.post(url, $( "#tchat").serialize(),function (json) {
-//         console.log(Object.values(json.message))
-//         $(".listMess").html("")
-//         Object.values(json.message).forEach(element => {
-//             $(".listMess").append( "<div><p>"+element.user+"</p><p>"+element.text+"</p></div>")
-            
-//         });
-//         console.log(json.message)
-       
-       
-//     },"json" ).done( function (result) { 
-//         console.log(result.message)
-//         result.message.forEach(element => {
-//             console.log(element)
-            
-//         });
-//     })
-// })
 
 import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
@@ -67,13 +46,11 @@ class App extends React.Component {
                     this.setState({
                         category : result
                     })
-                    console.log(result,Object.keys(this.state.category).length)
                 }
             }
             ) 
             
             find().then(res => {
-                console.log(res)
                 return res
                 
             }).then(
@@ -86,7 +63,6 @@ class App extends React.Component {
                         this.setState({
                             all : result
                         })
-                        console.log(result,Object.keys(this.state.all).length)
                     }
                 }
                 ) 
@@ -110,7 +86,6 @@ class App extends React.Component {
     }
 
     handleChange(e) {
-        console.log(e.target.value,this.state.radio)
         this.setState({ selectCat: e.target.value });
         search(this.state.radio,this.state.selectCat)
         .then(res => {
@@ -134,7 +109,6 @@ class App extends React.Component {
                 x:x,
                 y:y
             },function (){
-                console.log(this.state.flash)
                 window.getSelection()
                 .selectAllChildren(
                     e.target.querySelector(".content")
@@ -144,14 +118,6 @@ class App extends React.Component {
                
                 
             });
-            // navigator.clipboard.writeText(htmlContent).then(() => {
-            //         this.setState({ 
-            //             flash: true,
-            //             x:x,
-            //             y:y
-            //          });
-            // }
-            // ).then(setTimeout(() => this.setState({ flash: false }),1000))
         }
         else{
             
@@ -161,7 +127,6 @@ class App extends React.Component {
                     x:x,
                     y:y
                 },function (){
-                    console.log(this.state.flash)
                     window.getSelection()
                     .selectAllChildren(
                         e.target.parentNode.closest("p").nextElementSibling
@@ -173,13 +138,11 @@ class App extends React.Component {
                 });
             }
             else{
-                console.log(e.target.parentNode.closest("p"),e.target)
                 this.setState({ 
                     flash: true,
                     x:x,
                     y:y
                 },function (){
-                    console.log(this.state.flash)
                     window.getSelection()
                     .selectAllChildren(
                         e.target
@@ -190,22 +153,10 @@ class App extends React.Component {
                     
                 });
             }
-            // let htmlContent = e.target.textContent
-            // navigator.clipboard.writeText(htmlContent).then(() => {
-            //         this.setState({ 
-            //             flash: true,
-            //             x:x,
-            //             y:y 
-            //         });
-            // }
-            // ).then(setTimeout(() => this.setState({ flash: false }),1000))
-            console.log(e.target.textContent,e.target.querySelector(".content"))
         }
     }
      deleteItem = (e) => {
         e.preventDefault();
-       
-           console.log(e.target.parentNode, "toto")
            if(e.target.parentNode.className == "del"){
                del(e.target.parentNode.id)
                .then(res => {
@@ -226,17 +177,15 @@ class App extends React.Component {
                 </div>
 
     render() {
-        console.log(this.state.all)
     return (
             <div>
                <form className="recherche" onSubmit={this.click}> 
-                    {/* <Select onChange={this.handleChange} options={this.state.category} />   */}
                     <div className="radio">
                         {this.state.category.length > 0 ?  this.state.category.map(({value}) => {
                             return(
-                                <span> 
+                                <span key={value}> 
                                 <input type="radio" value={value} name="gender" id={value}  onChange={this.handleChange}/> 
-                                <label for={value}>
+                                <label htmlFor={value}>
                                     {value}
                                 </label>
                                 </span>
@@ -249,7 +198,7 @@ class App extends React.Component {
                 {Object.keys(this.state.listText).length != 0 ? this.state.listText.text.map(
                 ({ text, title,id }) =>  {
                     return (
-                        <div className="del" id={id} onClick={this.deleteItem}><i class="fa-regular fa-trash-can"></i>
+                        <div key={id} className="del" id={id} onClick={this.deleteItem}><i className="fa-regular fa-trash-can"></i>
                         <div  onClick={this.click}>
                             <Items
                                 key={id}
@@ -269,7 +218,7 @@ class App extends React.Component {
                 ):Object.keys(this.state.all).length != 0 ? this.state.all.map(
                     ({ text, title,id }) =>  {
                         return (
-                            <div className="del" id={id} onClick={this.deleteItem}><i class="fa-regular fa-trash-can"></i>
+                            <div key={id} className="del" id={id} onClick={this.deleteItem}><i className="fa-regular fa-trash-can"></i>
                             <div  onClick={this.click}>
                                 <Items
                                     key={id}
