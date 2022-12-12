@@ -205,14 +205,17 @@ class App extends React.Component {
      deleteItem = (e) => {
         e.preventDefault();
        
-           console.log(e)
-            del(e.target.id)
-            .then(res => {
-                return res
-             })
-             .then(
-                e.target.style.display= "none"
-             )
+           console.log(e.target.className, "toto")
+           if(e.target.className == "del"){
+               del(e.target.id)
+               .then(res => {
+                   return res
+                })
+                .then(
+                   e.target.style.display= "none"
+                )
+
+           }
         }
      
    
@@ -246,7 +249,7 @@ class App extends React.Component {
                 {Object.keys(this.state.listText).length != 0 ? this.state.listText.text.map(
                 ({ text, title,id }) =>  {
                     return (
-                        <div id={id} onClick={this.deleteItem}>X
+                        <div className="del" id={id} onClick={this.deleteItem}>X
                         <div  onClick={this.click}>
                             <Items
                                 key={id}
@@ -266,7 +269,7 @@ class App extends React.Component {
                 ):Object.keys(this.state.all).length != 0 ? this.state.all.map(
                     ({ text, title,id }) =>  {
                         return (
-                            <div id={id} onClick={this.deleteItem}>X
+                            <div className="del" id={id} onClick={this.deleteItem}>X
                             <div  onClick={this.click}>
                                 <Items
                                     key={id}
