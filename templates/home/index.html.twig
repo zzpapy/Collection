@@ -3,10 +3,14 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-<div class="">
-  <div class="top">
-    <a class="button" href="{{path('app_login')}}">Login</a>
-    <a class="button" href="{{path('app_register')}}">Register</a> 
+<div class="login">
+  <div class="form">
+    <div>
+      <a class=" btn btn-lg btn-primary" href="{{path('app_login')}}">Connexion</a>
+    </div>
+    <div>
+      <a class=" btn btn-lg btn-primary" href="{{path('app_register')}}">S'enregistrer</a> 
+    </div>
   </div>
 </div>
 {% endblock %}

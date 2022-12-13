@@ -6,6 +6,25 @@
     color: white;
     height: 100vh;
 }
+.login{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20%
+}
+.login form h1{
+    color: white;
+    text-align: center;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.form> div > input, .form> div > a {
+    width: 100%;
+    padding: 1em;
+    margin-bottom: 1em;
+}
 .top{
     display: flex;
     flex-wrap: wrap;
