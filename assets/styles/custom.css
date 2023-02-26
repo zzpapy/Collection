@@ -1,8 +1,8 @@
 .box{
-    // width: 90%;
+    /* // width: 90%; */
     margin: 0 auto;
     padding: 0.5em;
-    // background-color: #000;
+    /* // background-color: #000; */
     color: white;
     height: 100vh;
 }
@@ -54,7 +54,7 @@
     background-color: black !important;
 }
 #recherche{
-    // background-color: #000;
+    /* // background-color: #000; */
     height: 100vh;
 }
 .valid{
@@ -70,7 +70,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    // position: relative;
+    /* // position: relative; */
 }
 .listText > div{
     width: 25%;
@@ -79,7 +79,7 @@
 }
 .text{
     border-radius: 15px 15px 15px 15px;
-    // border: 1px solid black;
+    /* // border: 1px solid black; */
     border: 10px solid #00A4BD;
     margin-bottom: 1em;
     background-clip: border-box;
@@ -162,3 +162,8 @@ input[type="radio"] {
       width: 50%;
       margin-bottom: 1em;
     }
+   .pass{
+    position: absolute;
+    right: 17em;
+    top: 22.2em
+   }
