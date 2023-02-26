@@ -1,3 +1,5 @@
+
+
 body{
     font-family: arial;
 }
@@ -168,6 +170,6 @@ input[type="radio"] {
     }
    .pass{
     position: absolute;
-    right: 17em;
-    top: 22.2em
+    right: 27em;
+    top: 25.3em;
    }
