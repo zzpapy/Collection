@@ -1,3 +1,7 @@
+body{
+    font-family: arial;
+}
+
 .box{
     /* // width: 90%; */
     margin: 0 auto;
