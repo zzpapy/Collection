@@ -179,6 +179,7 @@ class App extends React.Component {
     render() {
     return (
             <div>
+                <div><a href="https://50anni-emanuela.fr" target="_blank">Une question à chatGPT</a></div>
                <form className="recherche" onSubmit={this.click}> 
                     <div className="radio">
                         {this.state.category.length > 0 ?  this.state.category.map(({value}) => {
